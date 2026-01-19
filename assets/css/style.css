@@ -1,0 +1,445 @@
+/* Global Styles */
+:root {
+    --primary-color: #003366;
+    /* Formal Dark Blue */
+    --secondary-color: #f4f4f4;
+    /* Light Gray */
+    --accent-color: #c0392b;
+    /* Deep Red for accents */
+    --text-color: #333;
+    --border-color: #ddd;
+    --table-header-bg: #003366;
+    --table-header-text: #ffffff;
+    --white: #ffffff;
+    --year-header-bg: #ece9e6;
+    --semester-header-color: #003366;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    direction: rtl;
+    text-align: right;
+    line-height: 1.6;
+}
+
+/* Login Page Styles */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+}
+
+.login-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.university-logo {
+    max-width: 120px;
+    height: auto;
+}
+
+.login-container h1 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #002244;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.footer-note {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* Grades Page Styles */
+.main-header {
+    background-color: var(--white);
+    border-bottom: 3px solid var(--primary-color);
+    padding: 15px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-wrapper {
+    flex: 0 0 auto;
+}
+
+.header-logo {
+    height: 80px;
+    width: auto;
+}
+
+/* Student Info Panel */
+.student-info-panel {
+    flex: 1;
+    margin: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    text-align: right;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.info-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.info-value {
+    font-weight: normal;
+    color: #333;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.logout-wrapper {
+    flex: 0 0 auto;
+}
+
+.btn-logout {
+    text-decoration: none;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #a93226;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+/* Background Logo Overlay */
+.grades-page {
+    position: relative;
+}
+
+.grades-page::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background-image: url('../images/11.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.05;
+    /* Fade effect */
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Hierarchical Grouping */
+.academic-year-block {
+    margin-bottom: 40px;
+    background: transparent;
+}
+
+.year-title {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 15px;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.semester-block {
+    margin-bottom: 30px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 5px 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.semester-title {
+    color: var(--semester-header-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.grades-table thead {
+    background-color: #f7f7f7;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.grades-table th,
+.grades-table td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.grades-table th {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Merged Course Cell Styles */
+.course-cell {
+    /* text-align: right is default */
+    padding: auto !important;
+    min-width: 100px;
+}
+
+.course-ar {
+    text-align: right;
+    font-weight: bold;
+    font-size: 12px;
+    /* Slightly larger than 9px for readability, will adjust if strict 9 requested */
+    color: var(--primary-color);
+    margin-bottom: 2px;
+}
+
+.course-en {
+    text-align: left;
+    font-style: italic;
+    font-size: 11px;
+    /* Slightly larger than 9px for readability */
+    color: #666;
+    direction: ltr;
+    /* Force LTR for English */
+}
+
+
+
+.score-val {
+    font-weight: bold;
+    font-size: 10;
+    color: #000;
+}
+
+.grade-text {
+    font-weight: bold;
+    font-size: 10px;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.grade-text.pass {
+    background-color: rgba(46, 204, 113, 0.2);
+    /* Light transparent green */
+    color: #000;
+}
+
+.grade-text.fail {
+    color: #000;
+    /* Fail Red */
+    background-color: #f46e60;
+    /* Or maybe light red if desired, but user said "red color" for fail */
+}
+
+.no-data {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--white);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.col-id {
+
+    font-weight: bold;
+}
+
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .student-info {
+        margin: 10px 0;
+    }
+
+    .content-container {
+        padding: 0 10px 30px;
+    }
+
+    .grade-text {
+        font-size: 8px;
+    }
+
+    .score-val {
+        font-size: 10px;
+
+    }
+
+    .col-id {
+
+        font-weight: bold;
+    }
+
+    /* Table optimizations for mobile */
+    .grades-table {
+        font-size: 0.6rem;
+    }
+
+    .grades-table th,
+    .grades-table td {
+        padding: 6px 4px;
+    }
+
+    /* Strict font sizes from request for mobile specifically if needed */
+    .course-ar {
+        font-size: 10px;
+        /* Closer to 9pt */
+    }
+
+    .course-en {
+        font-size: 9px;
+        /* Closer to 9pt */
+    }
+
+    /* Hide less critical columns on very small screens if absolutely necessary, 
+       but user requested full table. We try to fit. */
+    .col-note,
+    .col-note-content {
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .grades-page::before {
+        width: 80%;
+        opacity: 0.08;
+    }
+
+    
+}
