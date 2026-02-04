@@ -1,14 +1,17 @@
 <?php
 /**
- * Database Connection
- * Coolify / Production Ready
+ * Database Connection Test (Coolify)
  */
 
-$host = getenv('DB_HOST') ?: 'mysql';
-$dbname = getenv('DB_DATABASE') ?: 'student_grades';
-$username = getenv('DB_USERNAME') ?: 'user';
-$password = getenv('DB_PASSWORD') ?: 'password';
+$host = getenv('DB_HOST');
+$dbname = getenv('DB_DATABASE');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
 $port = getenv('DB_PORT') ?: 3306;
+
+if (!$host || !$dbname || !$username) {
+    die("❌ Database ENV variables not set");
+}
 
 try {
     $conn = new mysqli($host, $username, $password, $dbname, $port);
@@ -19,7 +22,9 @@ try {
 
     $conn->set_charset("utf8mb4");
 
+    echo "✅ Connected to Database Successfully";
+
 } catch (Exception $e) {
-    die("Database Connection Error: " . $e->getMessage());
+    echo "❌ Database Connection Failed: " . $e->getMessage();
 }
 ?>
