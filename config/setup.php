@@ -20,8 +20,10 @@ function setupDatabase($conn) {
         $tableCount = $result->num_rows;
         
         if ($tableCount > 0) {
-            // الجداول موجودة، تم إنشاء ملف العلامة
-            file_put_contents($setupFlagFile, date('Y-m-d H:i:s'));
+            // الجداول موجودة، نحاول إنشاء ملف العلامة بهدوء
+            if (is_writable(dirname($setupFlagFile))) {
+                @file_put_contents($setupFlagFile, date('Y-m-d H:i:s'));
+            }
             return ['status' => 'exists', 'message' => 'قاعدة البيانات موجودة مسبقاً'];
         }
         
@@ -86,8 +88,10 @@ function setupDatabase($conn) {
         // إعادة تفعيل فحص المفاتيح الأجنبية
         $conn->query("SET FOREIGN_KEY_CHECKS=1");
         
-        // إنشاء ملف علامة للإشارة إلى اكتمال الإعداد
-        file_put_contents($setupFlagFile, date('Y-m-d H:i:s'));
+        // إنشاء ملف علامة للإشارة إلى اكتمال الإعداد بهدوء
+        if (is_writable(dirname($setupFlagFile))) {
+            @file_put_contents($setupFlagFile, date('Y-m-d H:i:s'));
+        }
         
         return [
             'status' => 'success',
