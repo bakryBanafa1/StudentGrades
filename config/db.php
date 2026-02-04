@@ -1,23 +1,22 @@
 <?php
 /**
  * Database Connection
- * Configures the connection to the MySQL database.
+ * Coolify / Production Ready
  */
 
-$host = 'localhost';
-$dbname = 'student_grades';
-$username = 'root'; // Default XAMPP username
-$password = '';     // Default XAMPP password (empty)
+$host = getenv('DB_HOST') ?: 'mysql';
+$dbname = getenv('DB_DATABASE') ?: 'student_grades';
+$username = getenv('DB_USERNAME') ?: 'user';
+$password = getenv('DB_PASSWORD') ?: 'password';
+$port = getenv('DB_PORT') ?: 3306;
 
 try {
-    $conn = new mysqli($host, $username, $password, $dbname);
+    $conn = new mysqli($host, $username, $password, $dbname, $port);
 
-    // Check connection
     if ($conn->connect_error) {
-        throw new Exception("Connection failed: " . $conn->connect_error);
+        throw new Exception($conn->connect_error);
     }
 
-    // Set character set to utf8mb4 for Arabic support
     $conn->set_charset("utf8mb4");
 
 } catch (Exception $e) {
