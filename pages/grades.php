@@ -90,7 +90,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نتائج الامتحانات | <?php echo htmlspecialchars($student_name); ?></title>
+    <title>نتائج الامتحانات | <?php echo htmlspecialchars($student_name ?? ''); ?></title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -103,11 +103,11 @@ while ($row = $result->fetch_assoc()) {
             </div>
             <div class="student-info">
                 <h2>كشف الدرجات</h2>
-                <p>الطالب: <strong><?php echo htmlspecialchars($student_name); ?></strong></p>
-                <p>رقم القيد: <strong><?php echo htmlspecialchars($student_id); ?></strong></p>
-                <p>الكلية: <strong><?php echo htmlspecialchars($college_name); ?></strong></p>
-                <p>التخصص: <strong><?php echo htmlspecialchars($major_name); ?></strong></p>
-                <p>المستوى: <strong><?php echo htmlspecialchars($level_name); ?></strong></p>
+                <p>الطالب: <strong><?php echo htmlspecialchars($student_name ?? ''); ?></strong></p>
+                <p>رقم القيد: <strong><?php echo htmlspecialchars($student_id ?? ''); ?></strong></p>
+                <p>الكلية: <strong><?php echo htmlspecialchars($college_name ?? ''); ?></strong></p>
+                <p>التخصص: <strong><?php echo htmlspecialchars($major_name ?? ''); ?></strong></p>
+                <p>المستوى: <strong><?php echo htmlspecialchars($level_name ?? ''); ?></strong></p>
             </div>      
             <div class="logout-wrapper">
                 <a href="../auth/logout.php" class="btn-logout">تسجيل الخروج</a>
@@ -121,11 +121,11 @@ while ($row = $result->fetch_assoc()) {
             
             <?php foreach ($transcript as $year => $semesters): ?>
                 <div class="academic-year-block">
-                    <h3 class="year-title">العام الجامعي: <?php echo htmlspecialchars($year); ?>م</h3>
+                    <h3 class="year-title">العام الجامعي: <?php echo htmlspecialchars($year ?? ''); ?>م</h3>
                     
                     <?php foreach ($semesters as $semester => $grades): ?>
                         <div class="semester-block">
-                            <h4 class="semester-title">الفصل الدراسي: <?php echo htmlspecialchars($semester); ?></h4>
+                            <h4 class="semester-title">الفصل الدراسي: <?php echo htmlspecialchars($semester ?? ''); ?></h4>
                             
                             <div class="table-responsive">
                                 <table class="grades-table">
@@ -148,16 +148,16 @@ while ($row = $result->fetch_assoc()) {
                                         ?>
                                             <tr>
                                                 <td class="col-id"><?php echo $counter++; ?></td>
-                                                <td class="course-cell">
-                                                    <div class="course-ar"><?php echo htmlspecialchars($row['course_ar']); ?></div>
-                                                    <div class="course-en"><?php echo htmlspecialchars($row['course_en']); ?></div>
-                                                </td>
-                                                <td class="score-val"><?php echo htmlspecialchars($row['gsemster']); ?></td>
-                                                <td class="score-val"><?php echo htmlspecialchars($row['gexam']); ?></td>
-                                                <td class="score-val"><?php echo htmlspecialchars($row['gfinal']); ?></td>
-                                                <td class="score-val"><?php echo htmlspecialchars($row['gpa']); ?></td>
-                                                <td><span class="grade-text <?php echo ($row['result'] == 1) ? 'pass' : 'fail'; ?>"><?php echo htmlspecialchars($row['letter_grade']); ?></span></td>
-                                                <td class="col-note-content"><?php echo htmlspecialchars($row['note']); ?></td>
+                                                 <td class="course-cell">
+                                                    <div class="course-ar"><?php echo htmlspecialchars($row['course_ar'] ?? ''); ?></div>
+                                                    <div class="course-en"><?php echo htmlspecialchars($row['course_en'] ?? ''); ?></div>
+                                                 </td>
+                                                 <td class="score-val"><?php echo htmlspecialchars($row['gsemster'] ?? ''); ?></td>
+                                                 <td class="score-val"><?php echo htmlspecialchars($row['gexam'] ?? ''); ?></td>
+                                                 <td class="score-val"><?php echo htmlspecialchars($row['gfinal'] ?? ''); ?></td>
+                                                 <td class="score-val"><?php echo htmlspecialchars($row['gpa'] ?? ''); ?></td>
+                                                 <td><span class="grade-text <?php echo ($row['result'] == 1) ? 'pass' : 'fail'; ?>"><?php echo htmlspecialchars($row['letter_grade'] ?? ''); ?></span></td>
+                                                 <td class="col-note-content"><?php echo htmlspecialchars($row['note'] ?? ''); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
