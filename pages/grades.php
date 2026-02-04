@@ -135,7 +135,7 @@ while ($row = $result->fetch_assoc()) {
                                             <th class="course-cell">اسم المادة</th>
                                             <th>الفصل</th>
                                             <th>الامتحان</th>
-                                            <th>النهائي</th>
+                                            <th>الإجمالي</th>
                                             <th>النقاط</th>
                                             <th>التقدير</th>
                                             <th class="col-note">ملاحظات</th>
