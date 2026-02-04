@@ -1,3 +1,11 @@
+<?php
+// التحقق من إعداد قاعدة البيانات تلقائياً
+require_once __DIR__ . '/config/setup.php';
+$setupResult = setupDatabase($conn);
+
+// إذا فشل الإعداد بشكل فادح، يمكننا إظهار رسالة أو السماح للملف بالاستمرار إذا كان الجدول موجوداً بالفعل
+// سكريبت setupDatabase يعالج هذا داخلياً عبر ملف .db_setup_complete
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
